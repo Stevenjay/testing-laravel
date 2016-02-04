@@ -17,5 +17,9 @@
 
 	@yield('content')
 
+	<footer>
+		<p>Copyrwrong 2020</p>
+	</footer>
+
 </body>
 </html>
