@@ -12,14 +12,7 @@ class ProductsController extends Controller
 	//In charge of showing the default products page 
     public function index() {
 
-    	$products = [
-    		['name' => 'Apple',
-    		'price' => '$1'
-    		],
-    		[ 'name' => 'Banana',
-    		'price' => '$2'
-    		]
-    	];
+    	$products = \App\Product::where('price', '<', '1.50')->get();
 
     	$popularProducts = [];
 

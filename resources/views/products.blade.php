@@ -12,7 +12,7 @@
 	<h2>Fruit and Veg</h2>
 
 	@foreach($products as $product)
-		<p>{{ $product['name'] }} at {{ $product['price'] }} each</p>
+		<p>{{ $product->name }} at {{ $product->price }} each, we have {{ $product->stock }} in stock.</p>
 	@endforeach
 
 @endsection
