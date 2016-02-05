@@ -28,6 +28,8 @@ Route::post('contact', function () {
 });
 
 Route::get('products', 'ProductsController@index');
+Route::get('products/create', 'ProductsController@create')->middleware('web');
+Route::post('products/store', 'ProductsController@store')->middleware('web');
 
 /*
 |--------------------------------------------------------------------------
