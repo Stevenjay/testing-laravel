@@ -41,13 +41,13 @@ class ProductsController extends Controller
     		]);
 
     	//Create a new product
-    	$newProduct = new Product();
+    	$newProduct = new Product( $request->all() );
 
     	//Populate product with form data
-    	$newProduct->name 			= $request->name;
-    	$newProduct->description 	= $request->description;
-    	$newProduct->price 			= $request->price;
-    	$newProduct->stock 			= $request->stock;
+    	// $newProduct->name 			= $request->name;
+    	// $newProduct->description 	= $request->description;
+    	// $newProduct->price 			= $request->price;
+    	// $newProduct->stock 			= $request->stock;
 
     	$newProduct->save();
 
@@ -55,4 +55,52 @@ class ProductsController extends Controller
 
     	//return $request->all();
     }
+
+    public function show($id) {
+
+    	//Find the product with that id
+    	$product = Product::findOrFail($id);
+    	
+    	return view('products.show', compact('product'));
+
+    }
+
+    public function edit($id) {
+    	//Get the info about the product
+    	$product = Product::findOrFail($id);
+
+    	return view('products.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id) {
+
+    	$this->validate($request, [
+    			'name' => 'required|min:2'
+    		]);
+
+    	//Find the product we are editing 
+    	$product = Product::findOrFail($id);
+
+    	$product->name = $request->name;
+
+    	$product->save();
+
+    	return redirect('products/'.$id);
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

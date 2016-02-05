@@ -14,8 +14,7 @@
 	<h2>Fruit and Veg</h2>
 
 	@foreach($products as $product)
-		<p>{{ $product->name }} at {{ $product->price }} each, we have {{ $product->stock }} in stock.</p>
-		<p>{{ $product->description }}</p>
+		<p><a href="/products/{{ $product->id }}">{{ $product->name }}</a></p>
 	@endforeach
 
 @endsection
